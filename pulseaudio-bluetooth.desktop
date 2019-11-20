@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=PulseAudio Bluetooth
+Exec=/bin/sh -c "systemctl --user daemon-reload && pactl unload-module module-bluetooth-discover && systemctl --user start pulseaudio-bluetooth.service"

@@ -1,0 +1,14 @@
+[Unit]
+Description=PulseAudio Bluetooth
+After=pulseaudio.service
+Requires=pulseaudio.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+Environment=MODULE="module-bluetooth-discover"
+ExecStart=/usr/bin/pactl load-module ${MODULE}
+ExecStop=/usr/bin/pactl unload-module ${MODULE}
+
+[Install]
+WantedBy=default.target
