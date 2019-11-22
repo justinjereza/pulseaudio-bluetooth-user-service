@@ -6,9 +6,8 @@ Requires=pulseaudio.service
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-Environment=MODULE="module-bluetooth-discover"
-ExecStart=/usr/bin/pactl load-module ${MODULE}
-ExecStop=/usr/bin/pactl unload-module ${MODULE}
+ExecStart=/usr/bin/pactl load-module module-bluetooth-policy ; /usr/bin/pactl load-module module-bluetooth-discover
+ExecStop=/usr/bin/pactl unload-module module-bluetooth-discover ; /usr/bin/pactl unload-module module-bluetooth-policy
 
 [Install]
 WantedBy=default.target
